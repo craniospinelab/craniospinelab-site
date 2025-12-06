@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>CranioSpineLab | Ensino em Neurocirurgia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; background: #050816; color: #f9fafb; }
+    header { padding: 32px 24px; text-align: center; }
+    .logo { font-size: 28px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .highlight { color: #38bdf8; }
+    main { max-width: 960px; margin: 0 auto; padding: 16px 24px 40px; }
+    h1 { font-size: 32px; margin-bottom: 12px; }
+    p { line-height: 1.6; margin: 8px 0; }
+    .tagline { font-size: 18px; color: #e5e7eb; }
+    .grid { display: grid; gap: 16px; margin-top: 24px; }
+    @media (min-width: 768px) {
+      .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    .card { background: rgba(15,23,42,0.85); border-radius: 16px; padding: 16px 18px; border: 1px solid rgba(148,163,184,0.4); }
+    .card h2 { font-size: 18px; margin: 0 0 6px; }
+    .card p { font-size: 14px; color: #e5e7eb; }
+    .cta { margin-top: 32px; text-align: center; }
+    .btn { display: inline-block; padding: 12px 24px; border-radius: 999px; font-weight: 600; text-decoration: none; border: 1px solid #38bdf8; color: #0f172a; background: #38bdf8; }
+    .btn:hover { opacity: 0.9; }
+    footer { text-align: center; padding: 16px 24px 32px; font-size: 12px; color: #9ca3af; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      CRANIO<span class="highlight">SPINE</span>LAB
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h1>Plataforma brasileira de ensino em Neurocirurgia</h1>
+      <p class="tagline">
+        Atualização contínua em cirurgia craniana, coluna e nervos periféricos,
+        conectando residentes e neurocirurgiões experientes em uma mesma rede de aprendizado.
+      </p>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Guias cirúrgicos</h2>
+        <p>
+          Conteúdos estruturados por etapas, focados em tomada de decisão e segurança,
+          do planejamento ao pós operatório.
+        </p>
+      </div>
+      <div class="card">
+        <h2>Casos comentados</h2>
+        <p>
+          Discussão de casos reais, princípios, armadilhas frequentes e raciocínio cirúrgico aplicado à prática.
+        </p>
+      </div>
+      <div class="card">
+        <h2>Comunidade</h2>
+        <p>
+          Espaço para troca de experiência entre neurocirurgiões em diferentes fases da carreira,
+          do R1 ao sênior.
+        </p>
+      </div>
+    </section>
+
+    <section class="cta">
+      <p>Em breve, primeira turma piloto do CranioSpineLab.</p>
+      <a class="btn" href="mailto:contato@craniospinelab.com.br?subject=Quero%20saber%20mais%20sobre%20o%20CranioSpineLab">
+        Quero ser avisado(a)
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="ano"></span> CranioSpineLab. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    document.getElementById("ano").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
