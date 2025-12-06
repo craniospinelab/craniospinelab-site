@@ -4,73 +4,450 @@
   <meta charset="UTF-8" />
   <title>CranioSpineLab | Ensino em Neurocirurgia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="CranioSpineLab, plataforma brasileira de ensino em Neurocirurgia, com foco em crânio, coluna e nervos periféricos. Atualização contínua, guiada por cirurgiões em atividade." />
   <style>
-    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; background: #050816; color: #f9fafb; }
-    header { padding: 32px 24px; text-align: center; }
-    .logo { font-size: 28px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
-    .highlight { color: #38bdf8; }
-    main { max-width: 960px; margin: 0 auto; padding: 16px 24px 40px; }
-    h1 { font-size: 32px; margin-bottom: 12px; }
-    p { line-height: 1.6; margin: 8px 0; }
-    .tagline { font-size: 18px; color: #e5e7eb; }
-    .grid { display: grid; gap: 16px; margin-top: 24px; }
-    @media (min-width: 768px) {
-      .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    .card { background: rgba(15,23,42,0.85); border-radius: 16px; padding: 16px 18px; border: 1px solid rgba(148,163,184,0.4); }
-    .card h2 { font-size: 18px; margin: 0 0 6px; }
-    .card p { font-size: 14px; color: #e5e7eb; }
-    .cta { margin-top: 32px; text-align: center; }
-    .btn { display: inline-block; padding: 12px 24px; border-radius: 999px; font-weight: 600; text-decoration: none; border: 1px solid #38bdf8; color: #0f172a; background: #38bdf8; }
-    .btn:hover { opacity: 0.9; }
-    footer { text-align: center; padding: 16px 24px 32px; font-size: 12px; color: #9ca3af; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f5f0;
+      color: #0f172a;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(245, 245, 240, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #64748b;
+    }
+
+    .brand img {
+      height: 54px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      color: #1e293b;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: #0f766e;
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      padding: 32px 0 40px;
+    }
+
+    .hero {
+      display: grid;
+      gap: 32px;
+      align-items: center;
+    }
+
+    @media (min-width: 860px) {
+      .hero {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      }
+    }
+
+    .hero-logo-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-logo {
+      max-width: 280px;
+      width: 100%;
+      height: auto;
+    }
+
+    .hero-text h1 {
+      font-size: 32px;
+      margin-bottom: 12px;
+      color: #0b1120;
+    }
+
+    @media (min-width: 768px) {
+      .hero-text h1 {
+        font-size: 38px;
+      }
+    }
+
+    .hero-text p {
+      font-size: 16px;
+      color: #4b5563;
+      margin-bottom: 18px;
+    }
+
+    .hero-highlight {
+      font-weight: 600;
+      color: #0f766e;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #e0f2fe;
+      color: #075985;
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: none;
+      background: #0f766e;
+      color: #ecfeff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: 1px solid #94a3b8;
+      background: #f5f5f0;
+      color: #0f172a;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    section {
+      padding: 32px 0 6px;
+    }
+
+    section h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #0b1120;
+    }
+
+    section p {
+      font-size: 15px;
+      color: #4b5563;
+      max-width: 780px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    @media (min-width: 768px) {
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 16px 18px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+    }
+
+    .card h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+      color: #0b1120;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #4b5563;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: #ecfeff;
+      color: #0f766e;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 4px;
+    }
+
+    .contact-box {
+      background: #0f172a;
+      color: #e5e7eb;
+      border-radius: 20px;
+      padding: 22px 20px;
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .contact-box strong {
+      font-size: 16px;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .contact-link {
+      font-size: 14px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid #38bdf8;
+      color: #e0f2fe;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+    }
+
+    footer {
+      border-top: 1px solid #e2e8f0;
+      padding: 16px 0 24px;
+      margin-top: 26px;
+      font-size: 12px;
+      color: #6b7280;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">
-      CRANIO<span class="highlight">SPINE</span>LAB
+    <div class="container">
+      <nav class="nav">
+        <div class="brand">
+          <img src="img/logo-craniospinelab.png" alt="Logo CranioSpineLab" />
+          <div class="brand-text">
+            <span class="brand-title">CranioSpineLab</span>
+            <span class="brand-sub">Neurocirurgia | Ensino contínuo</span>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="#inicio">Início</a>
+          <a href="#proposta">Proposta</a>
+          <a href="#conteudos">Conteúdos</a>
+          <a href="#contato">Contato</a>
+        </div>
+      </nav>
     </div>
   </header>
 
-  <main>
-    <section>
-      <h1>Plataforma brasileira de ensino em Neurocirurgia</h1>
-      <p class="tagline">
-        Atualização contínua em cirurgia craniana, coluna e nervos periféricos,
-        conectando residentes e neurocirurgiões experientes em uma mesma rede de aprendizado.
-      </p>
-    </section>
+  <main id="inicio">
+    <div class="container">
+      <section class="hero">
+        <div class="hero-text">
+          <div class="hero-pill">
+            Plataforma brasileira dedicada à Neurocirurgia
+          </div>
+          <h1>
+            Ensino estruturado em
+            <span class="hero-highlight">crânio, coluna e nervos periféricos</span>
+          </h1>
+          <p>
+            O CranioSpineLab nasce para integrar residentes e neurocirurgiões experientes
+            em uma rede de aprendizado orientada por prática real, segurança do paciente
+            e atualização contínua.
+          </p>
+          <p>
+            Conteúdos organizados em guias cirúrgicos, casos comentados e rotinas de consultório,
+            com foco em decisão à beira do leito e dentro do centro cirúrgico.
+          </p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="mailto:contato@craniospinelab.com.br?subject=Quero%20ser%20avisado(a)%20sobre%20o%20CranioSpineLab">
+              Quero ser avisado(a) do lançamento
+            </a>
+            <a class="btn-secondary" href="#proposta">
+              Ver a proposta completa
+            </a>
+          </div>
+        </div>
+        <div class="hero-logo-wrapper">
+          <img src="img/logo-craniospinelab.png" alt="Logo CranioSpineLab" class="hero-logo" />
+        </div>
+      </section>
 
-    <section class="grid">
-      <div class="card">
-        <h2>Guias cirúrgicos</h2>
+      <section id="proposta">
+        <h2>Proposta do CranioSpineLab</h2>
         <p>
-          Conteúdos estruturados por etapas, focados em tomada de decisão e segurança,
-          do planejamento ao pós operatório.
+          A plataforma se organiza como um laboratório de prática em Neurocirurgia.
+          Cada módulo aproxima a literatura da realidade do serviço,
+          transformando guidelines e séries de casos em decisão cirúrgica aplicada.
         </p>
-      </div>
-      <div class="card">
-        <h2>Casos comentados</h2>
-        <p>
-          Discussão de casos reais, princípios, armadilhas frequentes e raciocínio cirúrgico aplicado à prática.
-        </p>
-      </div>
-      <div class="card">
-        <h2>Comunidade</h2>
-        <p>
-          Espaço para troca de experiência entre neurocirurgiões em diferentes fases da carreira,
-          do R1 ao sênior.
-        </p>
-      </div>
-    </section>
+        <div class="grid grid-3">
+          <div class="card">
+            <span class="tag">Guias cirúrgicos</span>
+            <h3>Passo a passo aplicável</h3>
+            <p>
+              Protocolos enxutos por patologia e via de acesso, com indicações,
+              contraindicações, planejamento de imagem, posicionamento, abordagem
+              e manejo de complicações.
+            </p>
+          </div>
+          <div class="card">
+            <span class="tag">Casos reais</span>
+            <h3>Discussão de caso a caso</h3>
+            <p>
+              Casos selecionados que evidenciam zonas cinzentas da prática diária
+              e mostram o raciocínio cirúrgico em situações desafiadoras.
+            </p>
+          </div>
+          <div class="card">
+            <span class="tag">Rede</span>
+            <h3>Troca entre gerações</h3>
+            <p>
+              Espaço pensado para mentoria, construção de carreira
+              e compartilhamento de lições aprendidas ao longo de anos de sala operatória.
+            </p>
+          </div>
+        </div>
+      </section>
 
-    <section class="cta">
-      <p>Em breve, primeira turma piloto do CranioSpineLab.</p>
-      <a class="btn" href="mailto:contato@craniospinelab.com.br?subject=Quero%20saber%20mais%20sobre%20o%20CranioSpineLab">
-        Quero ser avisado(a)
-      </a>
-    </section>
+      <section id="conteudos">
+        <h2>Para quem é o CranioSpineLab</h2>
+        <p>
+          A jornada foi desenhada para acompanhar diferentes fases da formação
+          em Neurocirurgia, da consolidação de bases ao refinamento de detalhes
+          em procedimentos complexos.
+        </p>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>Residentes e fellows</h3>
+            <p>
+              Estrutura para quem precisa transformar leitura dispersa
+              em um mapa claro de condutas, linhas de cuidado
+              e preparação para plantões e concursos.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Neurocirurgiões em atividade</h3>
+            <p>
+              Conteúdos voltados a atualização prática,
+              comparação de técnicas, refinamento de decisões
+              e incorporação segura de novas tecnologias.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contato">
+        <h2>Contato e interesse em parceria</h2>
+        <p>
+          Nesta fase inicial estamos estruturando os primeiros módulos,
+          definindo turmas piloto e convidando colegas interessados em cooperação,
+          docência e discussão de casos.
+        </p>
+        <div class="contact-box">
+          <div>
+            <strong>Quer ser avisado sobre o lançamento</strong>
+            <p>
+              Envie um e mail curto com seu nome, instituição e principal área de interesse
+              em Neurocirurgia. Usaremos essa base para organizar as primeiras trilhas.
+            </p>
+          </div>
+          <div class="contact-actions">
+            <a class="contact-link" href="mailto:contato@craniospinelab.com.br?subject=Interesse%20no%20CranioSpineLab">
+              contato@craniospinelab.com.br
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer>
@@ -79,6 +456,17 @@
 
   <script>
     document.getElementById("ano").textContent = new Date().getFullYear();
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        var alvo = document.querySelector(this.getAttribute("href"));
+        if (!alvo) return;
+        e.preventDefault();
+        window.scrollTo({
+          top: alvo.offsetTop - 80,
+          behavior: "smooth"
+        });
+      });
+    });
   </script>
 </body>
 </html>
